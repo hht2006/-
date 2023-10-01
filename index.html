@@ -39,6 +39,23 @@
       setInterval(function () {
         document.querySelector(".box").innerHTML = getTime();
       }, 1000);
+
+      // 获取访客数量
+      var count = localStorage.getItem("visitorCount");
+
+      // 检查是否已有访客数量
+      if (count) {
+        count = parseInt(count) + 1; // 增加访客数量
+      } else {
+        count = 1; // 第一个访客
+      }
+
+      // 更新 localStorage 中的访客数量
+      localStorage.setItem("visitorCount", count);
+
+      // 更新访客数量的显示
+      var visitorCountElement = document.getElementById("visitorCount");
+      visitorCountElement.innerHTML = "访客数量：" + count;
     </script>
   </head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -201,5 +218,6 @@
       <audio src="./篝火旁.mp3" controls loop></audio>
       <audio src="./but u.mp3" controls loop></audio>
     </div>
+    <div id="visitorCount">访客数量:0</div>
   </body>
 </html>
