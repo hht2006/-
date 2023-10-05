@@ -40,15 +40,16 @@
         document.querySelector(".box").innerHTML = getTime();
       }, 1000);
     </script>
-    <script
-      id="LA-DATA-WIDGET"
-      crossorigin="anonymous"
-      charset="UTF-8"
-      src="https://v6-widget.51.la/v6/KCz9DfP0CG9BCbDX/quote.js?theme=0&col=true&f=12&badge=icon_0&icon=center"
-    ></script>
   </head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+  <script
+    charset="UTF-8"
+    id="LA_COLLECT"
+    src="//sdk.51.la/js-sdk-pro.min.js"
+  ></script>
+  <script>
+    LA.init({ id: "KCz9DfP0CG9BCbDX", ck: "KCz9DfP0CG9BCbDX" });
+  </script>
   <title>桐崽的个人网站</title>
   <style>
     body {
@@ -113,6 +114,9 @@
       body {
         width: 100%;
       }
+    }
+    .tj {
+      text-align: center;
     }
   </style>
 
@@ -206,12 +210,14 @@
 
     <div class="box"></div>
     <hr />
-    <script
-      id="LA-DATA-WIDGET"
-      crossorigin="anonymous"
-      charset="UTF-8"
-      src="https://v6-widget.51.la/v6/KCz9DfP0CG9BCbDX/quote.js?theme=#FFFFFF,#333333,#999999,#333333,#FFFFFF,#1690FF,12&f=12&display=0,0,1,0,1,0,0,1"
-    ></script>
+    <div class="tj">
+      <script
+        id="LA-DATA-WIDGET"
+        crossorigin="anonymous"
+        charset="UTF-8"
+        src="https://v6-widget.51.la/v6/KCz9DfP0CG9BCbDX/quote.js?theme=#FFFFFF,#333333,#999999,#333333,#FFFFFF,#1690FF,12&f=12&display=0,0,1,0,1,0,0,1"
+      ></script>
+    </div>
     <div>
       <p align="center">
         如果您对布局设计有想法,欢迎您联系作者给予更多的观点,谢谢!
