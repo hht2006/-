@@ -72,10 +72,7 @@
     ul {
       list-style-type: none;
     }
-    img {
-      height: 40px;
-      float: left;
-    }
+  
     .dier {
       text-align: center;
       font-size: 40px;
@@ -103,17 +100,20 @@
       width:auto;
       background-color: pink;
     }
-  </style>
-  <style>
-   /* 移动设备样式 */
-      @media only screen and (max-width: 600px) {
-        .sidebar,
-        .content,
-        .sidebar-right {
-          float: none;
-          width: 100%;
-        }
-      }
+    /*数字工贸代码*/
+    .container {
+    display: flex;
+    justify-content: flex-end;
+  }
+  .wp_nav {
+    display: flex;
+    list-style: none;
+    padding: 0;
+  }
+  .nav-item {
+    margin-left: 10px;
+  }
+  
   </style>
   <style>
     @media only screen and (max-width: 600px) {
@@ -132,7 +132,63 @@
       top:0;
       overflow:hidden;
     }
-
+    .col_list .wp_listcolumn .wp_column a {
+      font-weight: normal;
+      color: white;
+      background: pink;
+      border-top:0px soild #ddd;
+      font-size:20px;
+    }
+    .col_metas .col_path{
+      display: inline-block;
+      float: right;
+      white-space: nowrap;
+      height: 20px;
+      margin-top: 15px;
+    }
+    .clearfix::after{
+      clear:both;
+      content: ".";
+      display: block;
+      height: 0;
+      visibility:hidden;
+    }
+    .news_list li.news span.news_meta {
+      margin-left: -50px;
+    }
+    .news_list li.news span.news_meta {
+      float:right;
+    }
+    .clearfix::after{
+      clear: both;
+      content:".";
+      display: block;
+      height: 0;
+      visibility: hidden;
+    }
+    .top-nav .wp_nav .nav-item a span.item-name{
+      display: inline-block;
+      padding: 5px 18px;
+      line-height: 17px;
+      cursor: pointer;
+    }
+    .wp_nav .nav-item a span.item-name{
+      display: inline-block;
+      padding: 5px 10px;
+      line-height: 22px;
+      cursor: pointer;
+    }
+    .top-nav .wp_nav .nav-item a {
+      font-size: 20px;
+      color: aqua;
+    }
+    .wp_nav .nav-item a {
+      font-family: "Microsoft Yahei";
+      display: block;
+      text-align: center;
+      position: relative;
+      z-index:100;
+    }
   </style>
 
   <body>
@@ -141,7 +197,6 @@
 	</div>
     <div class="daohang">
       <!--导航栏左侧头像-->
-      <div class="beijing"></div>
       <select style="border: 0" onchange="window.location=this.value;">
         <option value="https:hht2006.github.io/-/">比赛历程</option>
         <option value="https://mp.weixin.qq.com/s/EYcBU3AuczGJRPVztyhjtQ">2019年容桂田径运动会</option>
@@ -193,7 +248,8 @@
       </select>
       <select style="border: 0" onchange="window.location=this.value;">
         <option value="https://hht2006.github.io/-/">校园生活</option>
-        <option value="https://hht2006.github.io/-/class.html">课程表</option>
+        <option value="https://hht2006.github.io/-/class.html">大一上课程表</option>
+        <option value="https://hht2006.github.io/-/class3.html">大二上课程表</option>
         <option value="https://hht2006.github.io/-/index4.html">
           井川里予
         </option>
@@ -237,6 +293,109 @@
         charset="UTF-8"
         src="https://v6-widget.51.la/v6/KCz9DfP0CG9BCbDX/quote.js?theme=#FFFFFF,#333333,#999999,#333333,#FFFFFF,#1690FF,12&f=12&display=0,0,1,0,1,0,0,1"
       ></script>
+      <div class="container">
+  <ul class="wp_nav" data-nav-config="{drop_v:'down', drop_w:' right',dir:'y', opacity_main:'-1',opacity_sub:'-1',dwidth:'0'}">
+    <li class="nav-item i1">
+      <a href="https://eportal.gdgm.cn/" title="数字工贸" target="_blank"><span class="item-name">数字工贸</span></a><i class="mark"></i>
+    </li>
+    <li class="nav-item i2">
+      <a href="http://dept.gdgm.cn/zxzy/zypt/" title="教学资源" target="_blank"><span class="item-name">教学资源</span></a><i class="mark"></i>
+    </li>
+    <li class="nav-item i3">
+      <a href="http://www.gdgm.cn/lib/" title="图书资源" target="_blank"><span class="item-name">图书资源</span></a><i class="mark"></i>
+    </li>
+    <li class="nav-item i4">
+      <a href="http://dept.gdgm.cn/sjcj/" title="数据采集" target="_blank"><span class="item-name">数据采集</span></a><i class="mark"></i>
+    </li>
+    <li class="nav-item i5">
+      <a href="https://www.gdgm.cn/xxgk" title="信息公开" target="_blank"><span class="item-name">信息公开</span></a><i class="mark"></i>
+    </li>
+    <li class="nav-item i6">
+      <a href="/574/list.hem" title="About us" target="_blank"><span class="item-name">About us</span></a><i class="mark"></i>
+    </li>
+  </ul>
+</div>
+      <div class="col_menu_head" frag="面板1">
+        <h3 class="cabianlan1" frag="窗口1"portletmode="simplecolumnanchor">
+      <span class="col_name_text">
+        <span class="column">旧网址栏目</span>
+      </span>
+      </h3>
+      <a class="colum-switch" style="display:none;"></a>
+    </div>
+    </div>
+    <!--栏目列表-->
+    <div class="col_menu_con" frag="面板2">
+      <div class="col_list" frag="窗口2"portletmode="simplecolumlist">
+        <ul class="wp_listcolumn list-paddingleft-2">
+          <li class="wp_column-1">
+            <a title="首页" class="col_item_link" href="#">
+              <span class="column-name">首页</span>
+            </a>
+          </li>
+<li class="wp_column column-2">
+<a title="教学管理" class="col_item_link" href="#">
+<span class="column-name">教学管理</span>
+</a>
+</li>
+          <li class="wp_column column-3">
+            <a title="学生动态" class="col-item_link" href="#">
+              <span class="column-name">学生动态</span>
+            </a>
+          </li>
+          <li class="wp_column column-4">
+<a title="科研" class="col_item_link" href="#">
+<span class="column_name">科研</span>
+</a>
+</li>
+<li class="wp_column column-5">
+  <a title="政策法规" class="col-item_link" href="#">
+    <span class="column-name">政策法规</span>
+  </a>
+</li>
+        </ul>
+      </div>
+    </div>
+    <div class="col_news">
+      <div class="col_news_box">
+        <!--栏目名称-->
+        <div class="col_news_head" frag="面板3">
+          <ul class="col_metas clearfix" frag="窗口3" portlemode=" simplecolu mnattri">
+            <li class="col_title">
+              <h2>学校新闻</h2>
+            </li>
+            <li class="col_path">
+              <span class="path">当前位置:</span>
+              <a href="#"target="self">首页</a>
+              <span class="possplit">&nbsp;&nbsp;</span>
+              <a href="#" target="_self">旧网址栏目</a>
+              <span class="possplit">&nbsp;&nbsp;</span>
+              <a href="#" target="_self">学校新闻</a>
+            </li>
+            ::after
+          </ul>
+        </div>
+        <!--文章列表-->
+        <div class="col_nwes_con" frag="面板4">
+          <div class="col_news_list" frag="窗口4" portletmode="simplelist">
+            <ul class="news_list list1">
+              <li class="news n1 clearfix">
+                <span class="news_title">
+            <a href="https://s.yiban.cn/app/646844/post-detail/e2QCOZGdbDl2ODw" target="_blank" title=""欢喜迎寒假，分享返家情"活动">"欢喜迎寒假，分享返家情"活动</a>
+          </span>
+          <span class="news_meta">2022-05-09</span>
+          ::after
+        </li>
+        <li class="news n2 clearfix">
+          <span class="news_title">
+            <a href="#" target="_blank" title="12345">12345</a>
+          </span>
+          <span class="news_meta">2022-05-08</span>
+          ::after
+        </li>
+          </div>
+        </div>
+      </div>
     </div>
     <div>
       <p align="center">
@@ -247,6 +406,7 @@
       </p>
     </div>
     </div>
+    
     <div class="cebianlan">
       <a href="https://v.kuaishou.com/gR6mgN"targer="_blank">2023赛季总结</a><br>
       <a href="">2024</a>
