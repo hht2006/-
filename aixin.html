@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <html>
   <head>
-    <title>New Document</title>
+    <title>Love For 李璐</title>
     <meta name="Generator" content="EditPlus" />
     <meta name="Author" content="" />
     <meta name="Keywords" content="" />
@@ -13,16 +13,32 @@
         padding: 0;
         margin: 0;
         background: #000;
+        overflow: hidden;
+        font-family: Arial, sans-serif;
       }
       canvas {
         position: absolute;
         width: 100%;
         height: 100%;
       }
+      .name {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: #fff;
+        font-size: 32px;
+        text-shadow: 0 0 10px rgba(234, 128, 176, 0.8);
+        z-index: 10;
+        opacity: 0.9;
+        font-weight: bold;
+        letter-spacing: 2px;
+      }
     </style>
   </head>
 
   <body>
+    <div class="name">李璐</div>
     <canvas id="pinkboard"></canvas>
     <script>
       /*
