@@ -1,503 +1,630 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>桐崽的个人网站</title>
-  <script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
-  <script>
-    LA.init({ id: "KCz9DfP0CG9BCbDX", ck: "KCz9DfP0CG9BCbDX" });
-  </script>
-  <style>
-    :root {
-      --primary-color: #3498db;
-      --secondary-color: #2ecc71;
-      --dark-color: #2c3e50;
-      --light-color: #ecf0f1;
-      --accent-color: #e74c3c;
-      --text-color: #333;
-      --text-light: #7f8c8d;
-      --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      --transition: all 0.3s ease;
-    }
-    
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      line-height: 1.6;
-      color: var(--text-color);
-      background-color: #f9f9f9;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-    
-    /* 导航栏样式 */
-    .daohang {
-      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-      padding: 1rem;
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 1rem;
-      box-shadow: var(--shadow);
-      position: relative;
-      z-index: 100;
-    }
-    
-    .daohang select {
-      padding: 0.5rem 1rem;
-      border-radius: 25px;
-      border: none;
-      background-color: rgba(255, 255, 255, 0.9);
-      color: var(--dark-color);
-      font-weight: 500;
-      cursor: pointer;
-      transition: var(--transition);
-      box-shadow: var(--shadow);
-      min-width: 150px;
-      text-align: center;
-    }
-    
-    .daohang select:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-    }
-    
-    .daohang select:focus {
-      outline: none;
-    }
-    
-    /* 音乐播放器样式 */
-    audio {
-      width: 100%;
-      max-width: 300px;
-      margin: 0 auto;
-      display: block;
-      border-radius: 25px;
-      box-shadow: var(--shadow);
-    }
-    
-    /* 主要内容区域 */
-    .main-content {
-      flex: 1;
-      padding: 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
-      width: 100%;
-    }
-    
-    /* 标题样式 */
-    .header {
-      text-align: center;
-      margin: 2rem 0;
-      animation: fadeIn 1s ease;
-    }
-    
-    .dier {
-      font-size: 2.5rem;
-      color: var(--primary-color);
-      margin-bottom: 0.5rem;
-      font-weight: 700;
-      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
-    }
-    
-    .disan {
-      font-size: 1.2rem;
-      color: var(--text-light);
-      font-style: italic;
-    }
-    
-    /* 时间显示框样式 */
-    .time-container {
-      background: white;
-      padding: 2rem;
-      border-radius: 10px;
-      box-shadow: var(--shadow);
-      margin: 2rem auto;
-      max-width: 600px;
-      text-align: center;
-      transition: var(--transition);
-    }
-    
-    .time-container:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-    }
-    
-    .box {
-      font-size: 2rem;
-      color: var(--dark-color);
-      font-weight: bold;
-      margin: 1rem 0;
-    }
-    
-    hr {
-      border: 0;
-      height: 1px;
-      background: linear-gradient(to right, transparent, var(--primary-color), transparent);
-      margin: 2rem auto;
-      width: 80%;
-    }
-    
-    /* 快速链接区域 */
-    .quick-links {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
-      margin: 2rem 0;
-    }
-    
-    .link-card {
-      background: white;
-      border-radius: 10px;
-      padding: 1.5rem;
-      box-shadow: var(--shadow);
-      transition: var(--transition);
-      text-align: center;
-    }
-    
-    .link-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-    }
-    
-    .link-card h3 {
-      color: var(--primary-color);
-      margin-bottom: 1rem;
-      font-size: 1.3rem;
-    }
-    
-    .link-card a {
-      display: inline-block;
-      margin: 0.5rem;
-      padding: 0.5rem 1rem;
-      background: var(--light-color);
-      color: var(--dark-color);
-      border-radius: 5px;
-      text-decoration: none;
-      transition: var(--transition);
-    }
-    
-    .link-card a:hover {
-      background: var(--primary-color);
-      color: white;
-    }
-    
-    /* 新闻区域 */
-    .news-section {
-      background: white;
-      border-radius: 10px;
-      box-shadow: var(--shadow);
-      padding: 2rem;
-      margin: 2rem 0;
-    }
-    
-    .news-section h2 {
-      color: var(--dark-color);
-      margin-bottom: 1.5rem;
-      padding-bottom: 0.5rem;
-      border-bottom: 2px solid var(--primary-color);
-    }
-    
-    .news-list {
-      list-style: none;
-    }
-    
-    .news-list li {
-      padding: 1rem 0;
-      border-bottom: 1px solid #eee;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    
-    .news-list li:last-child {
-      border-bottom: none;
-    }
-    
-    .news-list a {
-      color: var(--text-color);
-      text-decoration: none;
-      transition: var(--transition);
-      flex: 1;
-    }
-    
-    .news-list a:hover {
-      color: var(--primary-color);
-      text-decoration: underline;
-    }
-    
-    .news-meta {
-      color: var(--text-light);
-      font-size: 0.9rem;
-    }
-    
-    /* 侧边栏 */
-    .sidebar {
-      background: var(--dark-color);
-      color: white;
-      padding: 1.5rem;
-      border-radius: 10px;
-      margin: 2rem 0;
-      box-shadow: var(--shadow);
-    }
-    
-    .sidebar a {
-      color: white;
-      text-decoration: none;
-      display: block;
-      padding: 0.5rem 0;
-      transition: var(--transition);
-    }
-    
-    .sidebar a:hover {
-      color: var(--secondary-color);
-      padding-left: 0.5rem;
-    }
-    
-    /* 照片区域 */
-    .photo-section {
-      text-align: center;
-      margin: 2rem 0;
-    }
-    
-    .photo-section img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 10px;
-      box-shadow: var(--shadow);
-      transition: var(--transition);
-    }
-    
-    .photo-section img:hover {
-      transform: scale(1.02);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-    }
-    
-    /* 页脚 */
-    .footer {
-      background: var(--dark-color);
-      color: white;
-      text-align: center;
-      padding: 1.5rem;
-      margin-top: auto;
-    }
-    
-    .footer p {
-      margin: 0.5rem 0;
-    }
-    
-    /* 动画效果 */
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    
-    /* 响应式设计 */
-    @media (max-width: 768px) {
-      .dier {
-        font-size: 2rem;
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>桐崽的个人网站</title>
+    <script
+      charset="UTF-8"
+      id="LA_COLLECT"
+      src="//sdk.51.la/js-sdk-pro.min.js"
+    ></script>
+    <script>
+      LA.init({ id: "KCz9DfP0CG9BCbDX", ck: "KCz9DfP0CG9BCbDX" });
+    </script>
+    <style>
+      :root {
+        --primary-color: #3498db;
+        --secondary-color: #2ecc71;
+        --dark-color: #2c3e50;
+        --light-color: #ecf0f1;
+        --accent-color: #e74c3c;
+        --text-color: #333;
+        --text-light: #7f8c8d;
+        --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        --transition: all 0.3s ease;
       }
-      
-      .disan {
-        font-size: 1rem;
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
       }
-      
-      .box {
-        font-size: 1.5rem;
-      }
-      
-      .quick-links {
-        grid-template-columns: 1fr;
-      }
-    }
-    
-    @media (max-width: 480px) {
-      .daohang {
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: var(--text-color);
+        background-color: #f9f9f9;
+        min-height: 100vh;
+        display: flex;
         flex-direction: column;
+      }
+
+      /* 导航栏样式 */
+      .daohang {
+        background: linear-gradient(
+          135deg,
+          var(--primary-color),
+          var(--secondary-color)
+        );
+        padding: 1rem;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+        box-shadow: var(--shadow);
+        position: relative;
+        z-index: 100;
+      }
+
+      .daohang select {
+        padding: 0.5rem 1rem;
+        border-radius: 25px;
+        border: none;
+        background-color: rgba(255, 255, 255, 0.9);
+        color: var(--dark-color);
+        font-weight: 500;
+        cursor: pointer;
+        transition: var(--transition);
+        box-shadow: var(--shadow);
+        min-width: 150px;
+        text-align: center;
+      }
+
+      .daohang select:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+      }
+
+      .daohang select:focus {
+        outline: none;
+      }
+
+      /* 音乐播放器样式 */
+      audio {
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+        display: block;
+        border-radius: 25px;
+        box-shadow: var(--shadow);
+      }
+
+      /* 主要内容区域 */
+      .main-content {
+        flex: 1;
+        padding: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+        width: 100%;
+      }
+
+      /* 标题样式 */
+      .header {
+        text-align: center;
+        margin: 2rem 0;
+        animation: fadeIn 1s ease;
+      }
+
+      .dier {
+        font-size: 2.5rem;
+        color: var(--primary-color);
+        margin-bottom: 0.5rem;
+        font-weight: 700;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+      }
+
+      .disan {
+        font-size: 1.2rem;
+        color: var(--text-light);
+        font-style: italic;
+      }
+
+      /* 时间显示框样式 */
+      .time-container {
+        background: white;
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: var(--shadow);
+        margin: 2rem auto;
+        max-width: 600px;
+        text-align: center;
+        transition: var(--transition);
+      }
+
+      .time-container:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .box {
+        font-size: 2rem;
+        color: var(--dark-color);
+        font-weight: bold;
+        margin: 1rem 0;
+      }
+
+      hr {
+        border: 0;
+        height: 1px;
+        background: linear-gradient(
+          to right,
+          transparent,
+          var(--primary-color),
+          transparent
+        );
+        margin: 2rem auto;
+        width: 80%;
+      }
+
+      /* 快速链接区域 */
+      .quick-links {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+        margin: 2rem 0;
+      }
+
+      .link-card {
+        background: white;
+        border-radius: 10px;
+        padding: 1.5rem;
+        box-shadow: var(--shadow);
+        transition: var(--transition);
+        text-align: center;
+      }
+
+      .link-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+      }
+
+      .link-card h3 {
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+        font-size: 1.3rem;
+      }
+
+      .link-card a {
+        display: inline-block;
+        margin: 0.5rem;
+        padding: 0.5rem 1rem;
+        background: var(--light-color);
+        color: var(--dark-color);
+        border-radius: 5px;
+        text-decoration: none;
+        transition: var(--transition);
+      }
+
+      .link-card a:hover {
+        background: var(--primary-color);
+        color: white;
+      }
+
+      /* 新闻区域 */
+      .news-section {
+        background: white;
+        border-radius: 10px;
+        box-shadow: var(--shadow);
+        padding: 2rem;
+        margin: 2rem 0;
+      }
+
+      .news-section h2 {
+        color: var(--dark-color);
+        margin-bottom: 1.5rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid var(--primary-color);
+      }
+
+      .news-list {
+        list-style: none;
+      }
+
+      .news-list li {
+        padding: 1rem 0;
+        border-bottom: 1px solid #eee;
+        display: flex;
+        justify-content: space-between;
         align-items: center;
       }
-      
-      .daohang select {
-        width: 100%;
-        max-width: 250px;
+
+      .news-list li:last-child {
+        border-bottom: none;
       }
-      
-      .dier {
-        font-size: 1.8rem;
+
+      .news-list a {
+        color: var(--text-color);
+        text-decoration: none;
+        transition: var(--transition);
+        flex: 1;
       }
-    }
-  </style>
-</head>
-<body>
-  <!-- 导航栏 -->
-  <div class="daohang">
-    <select onchange="window.location=this.value" title="选择比赛历程相关链接">
-      <option value="https:hht2006.github.io/-/">比赛历程</option>
-      <option value="https://mp.weixin.qq.com/s/EYcBU3AuczGJRPVztyhjtQ">2019 年容桂田径运动会</option>
-      <option value="https://v.kuaishou.com/h5sJq3">2023 年 WSE 佛山站</option>
-      <option value="https://v.douyin.com/i8jQAe41/">2023 年广东省田径锦标赛</option>
-      <option value="https://v.kuaishou.com/fMvAHk">2024 年容桂环岛马拉松</option>
-      <option value="https://mp.weixin.qq.com/s/b3tAumpzIre3nJPivkdUFA">广州黄埔公开赛</option>
-    </select>
-    
-    <select onchange="window.location=this.value" title="选择旅游回忆相关链接">
-      <option value="https://hht2006.github.io/-/">旅游回忆</option>
-      <option value="https://www.meipian.cn/4cq3obcm?share_from=self&share_to=group_singlemessage&user_id=493885726&uuid=9f1e4dff5d54350cb76f19cf21bb52f7&share_depth=1&first_share_uid=493885726&utm_medium=meipian_android&share_user_mpuuid=8b31af8a072f9560d2a0bcdbb27a998b&from=singlemessage&first_share_to=singlemessage">
-        海陵岛旅游
-      </option>
-      <option value="https://hht2006.github.io/-/index1.html">佛山一日游</option>
-      <option value="https://hht2006.github.io/-/index5.html">广州一日游</option>
-      <option value="https://v.douyin.com/iRbt8fL4/">香港游玩</option>
-    </select>
-    
-    <select onchange="window.location=this.value" title="选择义工回顾相关链接">
-      <option value="https://hht2006.github.io/-/">义工回顾</option>
-      <option value="https://mp.weixin.qq.com/s/4Esxw-kbvljNbP_jSV2OLg">绘"生" 绘"社" 探龙涌</option>
-      <option value="https://mp.weixin.qq.com/s/Jr2NpqMrob6ETYTrCln70Q">"行摄龙涌口"活动</option>
-      <option value="https://mp.weixin.qq.com/s/5l4rjpei8crRlGQDpZW0fA">细滘社区第二届微创投表彰会</option>
-      <option value="https://mp.weixin.qq.com/s/AO5YE-Vkl2kzrzw_XqXU9A">龙涌口村暖心慰问活动</option>
-      <option value="https://mp.weixin.qq.com/s/jAmHYQbvHkovAESLay4_IQ">为村里做点力所能及的事</option>
-      <option value="https://mp.weixin.qq.com/s/OuVltIBEfzbpG67qe7yGOA">大福基社区爱心大行动</option>
-      <option value="https://mp.weixin.qq.com/s/DKMp2moLaJz2IpCXLNuqPg">2023 年全国行业职业技能竞赛</option>
-      <option value="https://mp.weixin.qq.com/s/HBf8ls_6NhvgOOEy0Abrvg">物资收集活动</option>
-    </select>
-    
-    <select onchange="window.location=this.value" title="选择校园生活相关链接">
-      <option value="https://hht2006.github.io/-/">校园生活</option>
-      <option value="https://hht2006.github.io/-/class.html">大一上课程表</option>
-      <option value="https://hht2006.github.io/-/class3.html">大二上课程表</option>
-      <option value="https://hht2006.github.io/-/index4.html">井川里予</option>
-      <option value="https://mp.weixin.qq.com/s/oVUenlRUeew0H2saBw56tQ">新生军训</option>
-      <option value="https://mp.weixin.qq.com/s/JYZ68BXlLM2tpqMvBhCIuw">汽车学院第六届院运会</option>
-      <option value="https://v.douyin.com/iRAguq1e/">院运会 vlgo</option>
-      <option value="https://v.kuaishou.com/4prV82">军训 vlog</option>
-      <option value="https://mp.weixin.qq.com/s/J6x99zCLpb9pqXni40nIcg">加入汽院青协</option>
-      <option value="https://hht2006.github.io/-/aixin.html">爱心</option>
-      <option value="https://v.douyin.com/i8SG7Hd5/">2023 双子座流星雨</option>
-      <option value="https://mp.weixin.qq.com/s/yw6DdO4s37pf0sArxEqOgw">汽车学院第七届院运会</option>
-    </select>
-    
-    <select onchange="window.location=this.value" title="选择个人简介相关链接">
-      <option value="https://hht2006.github.io/-/">个人简介</option>
-      <option value="https://hht2006.github.io/-/index7.html">个人介绍</option>
-      <option value="https://hht2006.github.io/-/index11.html">联系作者</option>
-      <option value="https://m.tb.cn/h.guax6FX?tk=W1iR3kVqObd">闲鱼店铺</option>
-      <option value="https://mobile.yangkeduo.com/mall_page.html?pdd_bapp_share_channel=wechat&_sop_rcto=YWItv5f9UdS4skiegEPNOv3c&mall_id=597155171&msn=plte3ieyfyxqfpcxwh3jrgqkia_axbuy&_x_outbound_channel=__outbound_mall__&share_token=Upk2qdNNesfayYELiyXRFdvJtwAa8MTGWSyoKkmKOqXRj0mHrI0PtKCtINNs4pOQNzPQC7cbQ4LpvY-xBUJV39">拼多多店铺</option>
-    </select>
-    
-    <audio src="./MP3/Michael Calfan _ INNA - Call Me Now (V0).mp3" controls autoplay loop></audio>
-  </div>
 
-  <!-- 主要内容 -->
-  <div class="main-content">
-    <!-- 欢迎标题 -->
-    <div class="header">
-      <h1 class="dier">WELCOME</h1>
-      <p class="disan">奋斗到无能为力，坚持到感动自己！</p>
-    </div>
-    
-    <!-- 时间显示 -->
-    <div class="time-container">
-      <div class="box"></div>
-    </div>
-    
-    <hr>
-    
-    <!-- 快速链接 -->
-    <div class="quick-links">
-      <div class="link-card">
-        <h3>数字工贸</h3>
-        <a href="https://eportal.gdgm.cn/" target="_blank">数字工贸</a>
-        <a href="https://v.douyin.com/iANawP4F/ 3@9.com :7pm" target="_blank">抖音合集</a>
-        <a href="https://athleteh5.fplcloud.com/center?isTabbar=true" target="_blank">菲普莱</a>
-      </div>
-      
-      <div class="link-card">
-        <h3>学校资源</h3>
-        <a href="http://dept.gdgm.cn/sjcj/" target="_blank">数据采集</a>
-        <a href="https://www.gdgm.cn/xxgk" target="_blank">信息公开</a>
-        <a href="https://hht2006.github.io/-/index7.html" target="_blank">About us</a>
-      </div>
-      
-      <div class="link-card">
-        <h3>旧网址栏目</h3>
-        <a href="#">首页</a>
-        <a href="#">教学管理</a>
-        <a href="#">学生动态</a>
-        <a href="#">科研</a>
-        <a href="#">政策法规</a>
-      </div>
-    </div>
-    
-    <!-- 新闻区域 -->
-    <div class="news-section">
-      <h2>学校新闻</h2>
-      <ul class="news-list">
-        <li>
-          <a href="https://s.yiban.cn/app/646844/post-detail/e2QCOZGdbDl2ODw" target="_blank">"欢喜迎寒假，分享返家情"活动</a>
-          <span class="news-meta">2022-05-09</span>
-        </li>
-        <li>
-          <a href="#" target="_blank">12345</a>
-          <span class="news-meta">2022-05-08</span>
-        </li>
-      </ul>
-    </div>
-    
-    <!-- 侧边栏 -->
-    <div class="sidebar">
-      <h3>精彩瞬间</h3>
-      <a href="https://v.kuaishou.com/gR6mgN" target="_blank">2023赛季总结</a>
-    </div>
-    
-    <!-- 照片区域 -->
-    <div class="photo-section">
-      <img src="./08.jpg" alt="个人照片" height="200" width="200">
-      <p><a href="https://v.douyin.com/iSfMkbv7/ 2@5.com :">精彩视频</a></p>
-    </div>
-    
-    <!-- 提示信息 -->
-    <div class="notice">
-      <p align="center">如果您对布局设计有想法，欢迎您联系作者给予更多的观点，谢谢！</p>
-      <p align="center">作者对剪辑视频还不是很熟悉，如果您在这方面有经验或能给作者给予帮忙，欢迎各位打扰，谢谢！</p>
-    </div>
-  </div>
-  
-  <!-- 页脚 -->
-  <div class="footer">
-    <p>本站一切解释权归作者所有</p>
-    <div id="LA-DATA-WIDGET" crossorigin="anonymous" charset="UTF-8" src="https://v6-widget.51.la/v6/KCz9DfP0CG9BCbDX/quote.js?theme=#FFFFFF,#333333,#999999,#333333,#FFFFFF,#1690FF,12&f=12&display=0,0,1,0,1,0,0,1"></div>
-  </div>
+      .news-list a:hover {
+        color: var(--primary-color);
+        text-decoration: underline;
+      }
 
-  <script>
-    // 定义获取当前时间并格式化的函数
-    function getFormattedTime() {
-      var currentDate = new Date();
-      var year = currentDate.getFullYear();
-      var month = currentDate.getMonth() + 1;
-      month = month < 10 ? "0" + month : month;
-      var day = currentDate.getDate();
-      day = day < 10 ? "0" + day : day;
-      var hour = currentDate.getHours();
-      hour = hour < 10 ? "0" + hour : hour;
-      var minute = currentDate.getMinutes();
-      minute = minute < 10 ? "0" + minute : minute;
-      var seconds = currentDate.getSeconds();
-      seconds = seconds < 10 ? "0" + seconds : seconds;
-      return year + "年" + month + "月" + day + "日 " + hour + ":" + minute + ":" + seconds;
-    }
+      .news-meta {
+        color: var(--text-light);
+        font-size: 0.9rem;
+      }
 
-    // 每隔 1 秒更新时间显示
-    setInterval(function() {
-      document.querySelector(".box").innerHTML = getFormattedTime();
-    }, 1000);
-  </script>
-</body>
+      /* 侧边栏 */
+      .sidebar {
+        background: var(--dark-color);
+        color: white;
+        padding: 1.5rem;
+        border-radius: 10px;
+        margin: 2rem 0;
+        box-shadow: var(--shadow);
+      }
+
+      .sidebar a {
+        color: white;
+        text-decoration: none;
+        display: block;
+        padding: 0.5rem 0;
+        transition: var(--transition);
+      }
+
+      .sidebar a:hover {
+        color: var(--secondary-color);
+        padding-left: 0.5rem;
+      }
+
+      /* 照片区域 */
+      .photo-section {
+        text-align: center;
+        margin: 2rem 0;
+      }
+
+      .photo-section img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 10px;
+        box-shadow: var(--shadow);
+        transition: var(--transition);
+      }
+
+      .photo-section img:hover {
+        transform: scale(1.02);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      /* 页脚 */
+      .footer {
+        background: var(--dark-color);
+        color: white;
+        text-align: center;
+        padding: 1.5rem;
+        margin-top: auto;
+      }
+
+      .footer p {
+        margin: 0.5rem 0;
+      }
+
+      /* 动画效果 */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(-20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* 响应式设计 */
+      @media (max-width: 768px) {
+        .dier {
+          font-size: 2rem;
+        }
+
+        .disan {
+          font-size: 1rem;
+        }
+
+        .box {
+          font-size: 1.5rem;
+        }
+
+        .quick-links {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .daohang {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .daohang select {
+          width: 100%;
+          max-width: 250px;
+        }
+
+        .dier {
+          font-size: 1.8rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 导航栏 -->
+    <div class="daohang">
+      <select
+        onchange="window.location=this.value"
+        title="选择比赛历程相关链接"
+      >
+        <option value="https:hht2006.github.io/-/">比赛历程</option>
+        <option value="https://mp.weixin.qq.com/s/EYcBU3AuczGJRPVztyhjtQ">
+          2019 年容桂田径运动会
+        </option>
+        <option value="https://v.kuaishou.com/h5sJq3">
+          2023 年 WSE 佛山站
+        </option>
+        <option value="https://v.douyin.com/i8jQAe41/">
+          2023 年广东省田径锦标赛
+        </option>
+        <option value="https://v.kuaishou.com/fMvAHk">
+          2024 年容桂环岛马拉松
+        </option>
+        <option value="https://mp.weixin.qq.com/s/b3tAumpzIre3nJPivkdUFA">
+          广州黄埔公开赛
+        </option>
+      </select>
+
+      <select
+        onchange="window.location=this.value"
+        title="选择旅游回忆相关链接"
+      >
+        <option value="https://hht2006.github.io/-/">旅游回忆</option>
+        <option
+          value="https://www.meipian.cn/4cq3obcm?share_from=self&share_to=group_singlemessage&user_id=493885726&uuid=9f1e4dff5d54350cb76f19cf21bb52f7&share_depth=1&first_share_uid=493885726&utm_medium=meipian_android&share_user_mpuuid=8b31af8a072f9560d2a0bcdbb27a998b&from=singlemessage&first_share_to=singlemessage"
+        >
+          海陵岛旅游
+        </option>
+        <option value="https://hht2006.github.io/-/index1.html">
+          佛山一日游
+        </option>
+        <option value="https://hht2006.github.io/-/index5.html">
+          广州一日游
+        </option>
+        <option value="https://v.douyin.com/iRbt8fL4/">香港游玩</option>
+      </select>
+
+      <select
+        onchange="window.location=this.value"
+        title="选择义工回顾相关链接"
+      >
+        <option value="https://hht2006.github.io/-/">义工回顾</option>
+        <option value="https://mp.weixin.qq.com/s/4Esxw-kbvljNbP_jSV2OLg">
+          绘"生" 绘"社" 探龙涌
+        </option>
+        <option value="https://mp.weixin.qq.com/s/Jr2NpqMrob6ETYTrCln70Q">
+          "行摄龙涌口"活动
+        </option>
+        <option value="https://mp.weixin.qq.com/s/5l4rjpei8crRlGQDpZW0fA">
+          细滘社区第二届微创投表彰会
+        </option>
+        <option value="https://mp.weixin.qq.com/s/AO5YE-Vkl2kzrzw_XqXU9A">
+          龙涌口村暖心慰问活动
+        </option>
+        <option value="https://mp.weixin.qq.com/s/jAmHYQbvHkovAESLay4_IQ">
+          为村里做点力所能及的事
+        </option>
+        <option value="https://mp.weixin.qq.com/s/OuVltIBEfzbpG67qe7yGOA">
+          大福基社区爱心大行动
+        </option>
+        <option value="https://mp.weixin.qq.com/s/DKMp2moLaJz2IpCXLNuqPg">
+          2023 年全国行业职业技能竞赛
+        </option>
+        <option value="https://mp.weixin.qq.com/s/HBf8ls_6NhvgOOEy0Abrvg">
+          物资收集活动
+        </option>
+      </select>
+
+      <select
+        onchange="window.location=this.value"
+        title="选择校园生活相关链接"
+      >
+        <option value="https://hht2006.github.io/-/">校园生活</option>
+        <option value="https://hht2006.github.io/-/class.html">
+          大一上课程表
+        </option>
+        <option value="https://hht2006.github.io/-/class3.html">
+          大二上课程表
+        </option>
+        <option value="https://hht2006.github.io/-/index4.html">
+          井川里予
+        </option>
+        <option value="https://mp.weixin.qq.com/s/oVUenlRUeew0H2saBw56tQ">
+          新生军训
+        </option>
+        <option value="https://mp.weixin.qq.com/s/JYZ68BXlLM2tpqMvBhCIuw">
+          汽车学院第六届院运会
+        </option>
+        <option value="https://v.douyin.com/iRAguq1e/">院运会 vlgo</option>
+        <option value="https://v.kuaishou.com/4prV82">军训 vlog</option>
+        <option value="https://mp.weixin.qq.com/s/J6x99zCLpb9pqXni40nIcg">
+          加入汽院青协
+        </option>
+        <option value="https://hht2006.github.io/-/aixin.html">爱心</option>
+        <option value="https://v.douyin.com/i8SG7Hd5/">
+          2023 双子座流星雨
+        </option>
+        <option value="https://mp.weixin.qq.com/s/yw6DdO4s37pf0sArxEqOgw">
+          汽车学院第七届院运会
+        </option>
+      </select>
+
+      <select
+        onchange="window.location=this.value"
+        title="选择个人简介相关链接"
+      >
+        <option value="https://hht2006.github.io/-/">个人简介</option>
+        <option value="https://hht2006.github.io/-/index7.html">
+          个人介绍
+        </option>
+        <option value="https://hht2006.github.io/-/index11.html">
+          联系作者
+        </option>
+        <option value="https://m.tb.cn/h.guax6FX?tk=W1iR3kVqObd">
+          闲鱼店铺
+        </option>
+        <option
+          value="https://mobile.yangkeduo.com/mall_page.html?pdd_bapp_share_channel=wechat&_sop_rcto=YWItv5f9UdS4skiegEPNOv3c&mall_id=597155171&msn=plte3ieyfyxqfpcxwh3jrgqkia_axbuy&_x_outbound_channel=__outbound_mall__&share_token=Upk2qdNNesfayYELiyXRFdvJtwAa8MTGWSyoKkmKOqXRj0mHrI0PtKCtINNs4pOQNzPQC7cbQ4LpvY-xBUJV39"
+        >
+          拼多多店铺
+        </option>
+      </select>
+
+      <audio src="./tongzai/(V0).mp3" controls autoplay loop></audio>
+    </div>
+
+    <!-- 主要内容 -->
+    <div class="main-content">
+      <!-- 欢迎标题 -->
+      <div class="header">
+        <h1 class="dier">WELCOME</h1>
+        <p class="disan">奋斗到无能为力，坚持到感动自己！</p>
+      </div>
+
+      <!-- 时间显示 -->
+      <div class="time-container">
+        <div class="box"></div>
+      </div>
+
+      <hr />
+
+      <!-- 快速链接 -->
+      <div class="quick-links">
+        <div class="link-card">
+          <h3>数字工贸</h3>
+          <a href="https://eportal.gdgm.cn/" target="_blank">数字工贸</a>
+          <a href="https://v.douyin.com/iANawP4F/ 3@9.com :7pm" target="_blank"
+            >抖音合集</a
+          >
+          <a
+            href="https://athleteh5.fplcloud.com/center?isTabbar=true"
+            target="_blank"
+            >菲普莱</a
+          >
+        </div>
+
+        <div class="link-card">
+          <h3>学校资源</h3>
+          <a href="https://hht2006.github.io/-/tqyb.html" target="_blank"
+            >天气预报</a
+          >
+          <a href="https://www.gdgm.cn/xxgk" target="_blank">信息公开</a>
+          <a href="https://hht2006.github.io/-/index7.html" target="_blank"
+            >About us</a
+          >
+        </div>
+
+        <div class="link-card">
+          <h3>旧网址栏目</h3>
+          <a href="#">首页</a>
+          <a href="#">教学管理</a>
+          <a href="#">学生动态</a>
+          <a href="#">科研</a>
+          <a href="#">政策法规</a>
+        </div>
+      </div>
+
+      <!-- 新闻区域 -->
+      <div class="news-section">
+        <h2>学校新闻</h2>
+        <ul class="news-list">
+          <li>
+            <a
+              href="https://s.yiban.cn/app/646844/post-detail/e2QCOZGdbDl2ODw"
+              target="_blank"
+              >"欢喜迎寒假，分享返家情"活动</a
+            >
+            <span class="news-meta">2022-05-09</span>
+          </li>
+          <li>
+            <a href="#" target="_blank">12345</a>
+            <span class="news-meta">2022-05-08</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- 侧边栏 -->
+      <div class="sidebar">
+        <h3>精彩瞬间</h3>
+        <a href="https://v.kuaishou.com/gR6mgN" target="_blank">2023赛季总结</a>
+      </div>
+
+      <!-- 照片区域 -->
+      <div class="photo-section">
+        <img src="./08.jpg" alt="个人照片" height="200" width="200" />
+        <p><a href="https://v.douyin.com/iSfMkbv7/ 2@5.com :">精彩视频</a></p>
+      </div>
+
+      <!-- 提示信息 -->
+      <div class="notice">
+        <p align="center">
+          如果您对布局设计有想法，欢迎您联系作者给予更多的观点，谢谢！
+        </p>
+        <p align="center">
+          作者对剪辑视频还不是很熟悉，如果您在这方面有经验或能给作者给予帮忙，欢迎各位打扰，谢谢！
+        </p>
+      </div>
+    </div>
+
+    <!-- 页脚 -->
+    <div class="footer">
+      <p>本站一切解释权归作者所有</p>
+      <div
+        id="LA-DATA-WIDGET"
+        crossorigin="anonymous"
+        charset="UTF-8"
+        src="https://v6-widget.51.la/v6/KCz9DfP0CG9BCbDX/quote.js?theme=#FFFFFF,#333333,#999999,#333333,#FFFFFF,#1690FF,12&f=12&display=0,0,1,0,1,0,0,1"
+      ></div>
+    </div>
+
+    <script>
+      // 定义获取当前时间并格式化的函数
+      function getFormattedTime() {
+        var currentDate = new Date();
+        var year = currentDate.getFullYear();
+        var month = currentDate.getMonth() + 1;
+        month = month < 10 ? "0" + month : month;
+        var day = currentDate.getDate();
+        day = day < 10 ? "0" + day : day;
+        var hour = currentDate.getHours();
+        hour = hour < 10 ? "0" + hour : hour;
+        var minute = currentDate.getMinutes();
+        minute = minute < 10 ? "0" + minute : minute;
+        var seconds = currentDate.getSeconds();
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+        return (
+          year +
+          "年" +
+          month +
+          "月" +
+          day +
+          "日 " +
+          hour +
+          ":" +
+          minute +
+          ":" +
+          seconds
+        );
+      }
+
+      // 每隔 1 秒更新时间显示
+      setInterval(function () {
+        document.querySelector(".box").innerHTML = getFormattedTime();
+      }, 1000);
+    </script>
+  </body>
 </html>
